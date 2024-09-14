@@ -20,6 +20,23 @@ body {
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
+.sign-out-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #C0392B;
+    margin-right: 10px;
+
+}
+
+.sign-out-btn:hover{
+    color: #e74c3c;
+}
+
+.sign-out-btn i {
+    font-size: 1.5em;
+}
+
 .sidebar.collapsed {
     width: 60px;
 }
@@ -107,7 +124,7 @@ body {
 
 /* Chat container styling */
 .chat-container {
-    margin-left: 250px;
+    margin-left: 150px;
     padding: 20px;
     transition: margin-left 0.3s ease;
 }
@@ -299,6 +316,14 @@ input:checked + .slider:before {
     .chat-box {
         height: 300px;
     }
+    
+    .sign-out-btn {
+         margin-right: 5px;
+        }
+    
+    .sign-out-btn i {
+        font-size: 1.3em;
+        }
 }
 
 /* For mobile phones (480px and below) */
@@ -343,6 +368,14 @@ input:checked + .slider:before {
         height: 40px;
         font-size: 16px;
     }
+
+    .sign-out-btn {
+        margin-right: 3px;
+    }
+
+    .sign-out-btn i {
+        font-size: 1.2em;
+    }
 }
 
 /* For larger screens (1200px and above) */
@@ -365,5 +398,13 @@ input:checked + .slider:before {
 
     .chat-box {
         height: 500px;
+    }
+    
+    .sign-out-btn {
+        margin-right: 15px;
+    }
+
+    .sign-out-btn i {
+        font-size: 1.6em;
     }
 }

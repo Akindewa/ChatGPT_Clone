@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const sidebarToggle = document.getElementById('sidebar-toggle');
+    const signOutBtn = document.getElementById('sign-out-btn');
     const sidebar = document.querySelector('.sidebar');
     const chatContainer = document.querySelector('.chat-container');
     const modeToggleCheckbox = document.getElementById('mode-toggle-checkbox');
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "What is Richard Branson known for?",
         "Who is the youngest billionaire?",
         "What is Steve Jobs known for?",
+        "What is blockchain technology?",
     ];
     
     const answers = [
@@ -112,7 +114,8 @@ document.addEventListener("DOMContentLoaded", function() {
         "Oprah Winfrey is a media mogul, talk show host, and philanthropist.",
         "Richard Branson is the founder of the Virgin Group and is known for his adventurous spirit and business ventures.",
         "As of 2024, Alexandr Wang, founder of Scale AI, is considered one of the youngest billionaires.",
-        "Steve Jobs co-founded Apple and was known for his role in revolutionizing personal computing and consumer electronics."
+        "Steve Jobs co-founded Apple and was known for his role in revolutionizing personal computing and consumer electronics.",
+        "Blockchain technology is a decentralized ledger system used to securely record transactions across a network of computers."
     ];
     
 
@@ -123,6 +126,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const icon = sidebarToggle.querySelector('i');
         icon.classList.toggle('fa-chevron-right');
         icon.classList.toggle('fa-chevron-left');
+    });
+
+      // Sign out functionality
+      signOutBtn.addEventListener('click', function() {
+        window.location.href = './signup.html'; // Redirect to signup page (update this link to match your actual signup page)
     });
 
     // Mode toggle functionality (light/dark mode)
@@ -136,24 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Handle sending messages
-    sendButton.addEventListener('click', function() {
-        const userQuestion = userInput.value.trim();
-        if (userQuestion !== "") {
-            addMessageToChat("User", userQuestion);
-            const response = getAnswer(userQuestion);
-            addMessageToChat("ChatGPT", response);
-            userInput.value = '';  // Clear the input field
-        }
-    });
-
-    // Start new conversation
-    newConversationBtn.addEventListener('click', function() {
-        chatBox.innerHTML = '';  // Clear chat box for new conversation
-        addMessageToChat("System", "New conversation started. Ask me anything!");
-    });
-
-    // Adding message to chat
+    // Function to add messages to chat
     function addMessageToChat(sender, message) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
@@ -162,13 +153,43 @@ document.addEventListener("DOMContentLoaded", function() {
         chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to the bottom
     }
 
-    // Get an answer for the user's question
+    // Function to get an answer for the user's question
     function getAnswer(userQuestion) {
         const questionIndex = questions.findIndex(q => userQuestion.toLowerCase().includes(q.toLowerCase()));
         if (questionIndex !== -1) {
             return answers[questionIndex];
         } else {
             return "Sorry, I don't have an answer for that right now. Can you try asking something else?";
+        }
     }
-     } 
+
+    // Handle sending messages
+    function handleSendMessage() {
+        const userQuestion = userInput.value.trim();
+        if (userQuestion !== "") {
+            addMessageToChat("User", userQuestion);
+            const response = getAnswer(userQuestion);
+            addMessageToChat("ChatGPT", response);
+            userInput.value = '';  // Clear the input field
+        }
+    }
+
+    // Trigger send message when pressing Enter key
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            handleSendMessage();
+        }
+    });
+
+    // Trigger send message when clicking the send button
+    sendButton.addEventListener('click', function() {
+        handleSendMessage();
+    });
+
+    // Start new conversation
+    newConversationBtn.addEventListener('click', function() {
+        chatBox.innerHTML = '';  // Clear chat box for new conversation
+        addMessageToChat("System", "New conversation started. Ask me anything!");
+    });
+    
 });
