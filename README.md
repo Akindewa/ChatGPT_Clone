@@ -1,6 +1,6 @@
-# LinkedIn Demo App
+# ChatGptClone App
 
-This project is aimed at replicating linkedin desktop and mobile user interface. Since it is just a demo account, major responsiveness wasnt considered. The app will contain the following: The login page, the dashboard and some other pages.
+This project is aimed at replicating ChatGpt desktop and mobile user interface and API. Since it is just a demo account, major responsiveness wasnt considered. The app will contain the following: The login page, the dashboard and the API interface.
 
 ## Project Link
 
@@ -22,4 +22,4 @@ You can access this project by pasting this link into your web browser: https://
 ![alt text](<images/Screenshot 2024-09-29 at 11.29.43 AM.png>) 
 ![alt text](<images/Screenshot 2024-09-29 at 11.29.51 AM.png>)
 
-## Thank you for your time🥰
+## Enjoy🥰
